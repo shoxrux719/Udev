@@ -6,6 +6,7 @@ import RootLayout from "./_root/RootLayout";
 function App() {
   return (
     <Routes>
+      {/* Nmadr */}
       <Route element={<RootLayout />}>
         <Route index element={<Home />} />
       </Route>

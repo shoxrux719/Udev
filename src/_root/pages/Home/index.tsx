@@ -81,7 +81,7 @@ const Home: React.FC = () => {
             <p className="text-5xl font-bold leading-[57.6px] text-center pt-[150px]">KURSLARIMIZ</p>
           </div>
         </div>
-        {/* <div className="min-h-screen flex gap-3 items-center justify-center p-4">
+        <div className="min-h-screen flex gap-3 items-center justify-center p-4">
         <Carousel className="relative w-[1290px]">
 
           <CarouselContent>
@@ -119,7 +119,7 @@ const Home: React.FC = () => {
           </div>
 
         </Carousel>
-      </div> */}
+      </div>
       </div>
     </>
   );
