@@ -22,19 +22,33 @@ const Home: React.FC = () => {
     <>
 
       {/* Content */}
-      <div className="text-center max-w-[1272px]  text-white pt-[130px] mx-auto relative z-10 mb-[66px]">
+      <div className="text-center max-w-[1272px]  text-black pt-[130px] mx-auto relative z-10 mb-[66px]">
         <div className="max-w-[1090px] relative">
+
           <TextEffect
-            className=" text-3xl text-left md:text-5xl font-bold mb-4"
+            className="@apply text-[152px] font-semibold leading-[55px] text-left pb-[70px]"
             preset="fade-in-blur"
             speedReveal={1.1}
             speedSegment={0.3}
           >
-            Qanday qilib biz jahon darajasidagi IT-mutaxassislarni
-            tayyorlashimizni bilib oling!
+            UQIUE DEVS
           </TextEffect>
-          <div className="absolute w-[257px] h-[80px] bg-[url('/public/assets/images/Star.png')] left-[928.35px] top-[90px]"></div>
-         
+          <TextEffect
+            className=" text-3xl leading-[55px] text-left md:text-5xl font-bold mb-4"
+            preset="fade-in-blur"
+            speedReveal={1.1}
+            speedSegment={0.3}
+            
+           style={{ whiteSpace: "pre-line" }}
+                
+        
+          >
+            Qanday qilib biz jahon darajasidagi 
+            IT-mutaxassislarini tayyorlashimizni 
+            bilib oling!
+          </TextEffect>
+          <div className="absolute w-[600px] h-[600px] bg-[url('/public/assets/images/Line.png')] bg-no-repeat  left-[928.35px] top-[90px]"></div>
+
           <TextEffect
             preset="fade-in-blur"
             speedReveal={1.1}
@@ -68,12 +82,10 @@ const Home: React.FC = () => {
           </Card>
         </div>
       </div>
-      <div className="relative">
-        <div className="w-[243px] h-[243px] mb-[30px] absolute top-[-125px] left-[43%] z-10 bg-[url('/assets/images/T-Rex.png')] bg-cover bg-no-repeat">
-        </div>
 
 
-      </div>
+
+
       <div className="min-h-screen bg-[#fff] rounded-tl-[92px] rounded-tr-[92px]">
         <div>
           <div className="flex relative items-center justify-center">
@@ -82,44 +94,35 @@ const Home: React.FC = () => {
           </div>
         </div>
         <div className="min-h-screen flex gap-3 items-center justify-center p-4">
-        <Carousel className="relative w-[1290px]">
+          <Carousel className="relative w-[1290px]">
 
-          <CarouselContent>
-            {Array.from({ length: 10 }).map((_, index) => (
-              <CarouselItem
-                key={index}
-                className="md:basis-3/ lg:basis-1/3 relative"
-                onClick={() => setActiveIndex(index)}
-              >
-                <div className="relative">
-                  <HomeCard isActive={index === activeIndex} />
-                </div>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-
-      
-          <div className="absolute -bottom-16 left-1/2 transform -translate-x-1/2 flex gap-2 z-50">
-            <button onClick={() => setActiveIndex((prev) => Math.max(0, prev - 1))}>
-              <CarouselPrevious />
-            </button>
-            <div className="absolute bottom-[-50px] left-1/2 transform -translate-x-1/2 flex gap-2 z-50">
+            <CarouselContent>
               {Array.from({ length: 10 }).map((_, index) => (
-                <button
+                <CarouselItem
                   key={index}
+                  className="md:basis-3/ lg:basis-1/3 relative"
                   onClick={() => setActiveIndex(index)}
-                  className={`h-3 w-3 rounded-full ${activeIndex === index ? "bg-blue-500" : "bg-gray-300"
-                    }`}
-                />
+                >
+                  <div className="relative">
+                    <HomeCard isActive={index === activeIndex} />
+                  </div>
+                </CarouselItem>
               ))}
-            </div>
-            <button onClick={() => setActiveIndex((prev) => Math.min(9, prev + 1))}>
-              <CarouselNext />
-            </button>
-          </div>
+            </CarouselContent>
 
-        </Carousel>
-      </div>
+
+            <div className="absolute -bottom-16 left-1/2 transform -translate-x-1/2 flex gap-2 z-50">
+              <button onClick={() => setActiveIndex((prev) => Math.max(0, prev - 1))}>
+                <CarouselPrevious />
+              </button>
+
+              <button onClick={() => setActiveIndex((prev) => Math.min(9, prev + 1))}>
+                <CarouselNext />
+              </button>
+            </div>
+
+          </Carousel>
+        </div>
       </div>
     </>
   );
