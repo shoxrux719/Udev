@@ -1,4 +1,4 @@
-import React, { useState, useEffect, } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Carousel,
   CarouselContent,
@@ -12,15 +12,14 @@ import { CardContent, Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { TextEffect } from "@/components/ui/text-effect";
 import { ArrowUpRight } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const Home: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState<number>(1);
-
-
+  const { t } = useTranslation();
 
   return (
     <>
-
       {/* Content */}
       <div className="text-center max-w-[1272px]  text-white pt-[130px] mx-auto relative z-10 mb-[66px]">
         <div className="max-w-[1090px] relative">
@@ -34,7 +33,7 @@ const Home: React.FC = () => {
             tayyorlashimizni bilib oling!
           </TextEffect>
           <div className="absolute w-[257px] h-[80px] bg-[url('/public/assets/images/Star.png')] left-[928.35px] top-[90px]"></div>
-         
+
           <TextEffect
             preset="fade-in-blur"
             speedReveal={1.1}
@@ -54,12 +53,15 @@ const Home: React.FC = () => {
               </button>
             </div>
           </div>
-          <Card
-            className="relative bg-white w-[215px] h-[100px] text-[#1F2E47] rounded-[20px] px-4 py-2 mr-[60px]">
+          <Card className="relative bg-white w-[215px] h-[100px] text-[#1F2E47] rounded-[20px] px-4 py-2 mr-[60px]">
             <CardContent>
               <div className="flex-col items-center pt-2">
-                <p className="text-4xl font-bold  text-left flex ">125 <span className="text-2xl font-bold text-left">k+</span></p>
-                <p className="text-base font-normal leading-6 text-left">O‘quvchilar soni</p>
+                <p className="text-4xl font-bold  text-left flex ">
+                  125 <span className="text-2xl font-bold text-left">k+</span>
+                </p>
+                <p className="text-base font-normal leading-6 text-left">
+                  {t("title")}
+                </p>
                 <Button className=" absolute top-[-.5px] right-[-52px] bg-[#ADFF00] text-black hover:bg-lime-600 w-[83px] h-[100px] rounded-[20px] px-4 font-semibold text-base  ">
                   KIRISH
                 </Button>
@@ -69,57 +71,56 @@ const Home: React.FC = () => {
         </div>
       </div>
       <div className="relative">
-        <div className="w-[243px] h-[243px] mb-[30px] absolute top-[-125px] left-[43%] z-10 bg-[url('/assets/images/T-Rex.png')] bg-cover bg-no-repeat">
-        </div>
-
-
+        <div className="w-[243px] h-[243px] mb-[30px] absolute top-[-125px] left-[43%] z-10 bg-[url('/assets/images/T-Rex.png')] bg-cover bg-no-repeat"></div>
       </div>
       <div className="min-h-screen bg-[#fff] rounded-tl-[92px] rounded-tr-[92px]">
         <div>
           <div className="flex relative items-center justify-center">
             <div className="absolute bg-[url('/public/assets/images/Cactus.png')] w-12 h-[99px] bg-no-repeat left-[33%] top-[100px]"></div>
-            <p className="text-5xl font-bold leading-[57.6px] text-center pt-[150px]">KURSLARIMIZ</p>
+            <p className="text-5xl font-bold leading-[57.6px] text-center pt-[150px]"></p>
           </div>
         </div>
         <div className="min-h-screen flex gap-3 items-center justify-center p-4">
-        <Carousel className="relative w-[1290px]">
-
-          <CarouselContent>
-            {Array.from({ length: 10 }).map((_, index) => (
-              <CarouselItem
-                key={index}
-                className="md:basis-3/ lg:basis-1/3 relative"
-                onClick={() => setActiveIndex(index)}
-              >
-                <div className="relative">
-                  <HomeCard isActive={index === activeIndex} />
-                </div>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-
-      
-          <div className="absolute -bottom-16 left-1/2 transform -translate-x-1/2 flex gap-2 z-50">
-            <button onClick={() => setActiveIndex((prev) => Math.max(0, prev - 1))}>
-              <CarouselPrevious />
-            </button>
-            <div className="absolute bottom-[-50px] left-1/2 transform -translate-x-1/2 flex gap-2 z-50">
+          <Carousel className="relative w-[1290px]">
+            <CarouselContent>
               {Array.from({ length: 10 }).map((_, index) => (
-                <button
+                <CarouselItem
                   key={index}
+                  className="md:basis-3/ lg:basis-1/3 relative"
                   onClick={() => setActiveIndex(index)}
-                  className={`h-3 w-3 rounded-full ${activeIndex === index ? "bg-blue-500" : "bg-gray-300"
-                    }`}
-                />
+                >
+                  <div className="relative">
+                    <HomeCard isActive={index === activeIndex} />
+                  </div>
+                </CarouselItem>
               ))}
-            </div>
-            <button onClick={() => setActiveIndex((prev) => Math.min(9, prev + 1))}>
-              <CarouselNext />
-            </button>
-          </div>
+            </CarouselContent>
 
-        </Carousel>
-      </div>
+            <div className="absolute -bottom-16 left-1/2 transform -translate-x-1/2 flex gap-2 z-50">
+              <button
+                onClick={() => setActiveIndex((prev) => Math.max(0, prev - 1))}
+              >
+                <CarouselPrevious />
+              </button>
+              <div className="absolute bottom-[-50px] left-1/2 transform -translate-x-1/2 flex gap-2 z-50">
+                {Array.from({ length: 10 }).map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setActiveIndex(index)}
+                    className={`h-3 w-3 rounded-full ${
+                      activeIndex === index ? "bg-blue-500" : "bg-gray-300"
+                    }`}
+                  />
+                ))}
+              </div>
+              <button
+                onClick={() => setActiveIndex((prev) => Math.min(9, prev + 1))}
+              >
+                <CarouselNext />
+              </button>
+            </div>
+          </Carousel>
+        </div>
       </div>
     </>
   );
