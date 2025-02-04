@@ -10,7 +10,7 @@
   }
 
   body {
-    @apply bg-[#0F0F11] text-white min-h-screen font-inter;
+    @apply bg-[#fff] text-white min-h-screen font-inter;
     font-family: 'Poppins', sans-serif;  }
   :root {
     --background: 0 0% 100%;
@@ -354,7 +354,7 @@ body::before {
   background:
     linear-gradient(90deg, var(--line) 1px, transparent 1px 10vmin) 0 -5vmin / 10vmin 10vmin,
     linear-gradient(var(--line) 1px, transparent 1px 10vmin) 0 -5vmin / 10vmin 10vmin;
-  mask: linear-gradient(-15deg, transparent 0%, rgb(0, 0, 0));
+  mask: linear-gradient(-15deg, transparent 0%, rgb(255, 255, 255));
   top: 0;
   z-index: -1;
  
@@ -371,8 +371,8 @@ body::after {
   top: 0;
   left: 0;
   background: 
-    radial-gradient(circle at top left, rgb(0, 0, 0), transparent 150%),
-    radial-gradient(circle at top, rgb(0, 0, 0), transparent 70%);
+    radial-gradient(circle at top left, rgb(255, 255, 255), transparent 150%),
+    radial-gradient(circle at top, rgb(255, 255, 255), transparent 70%);
   z-index: -1;
 }
 

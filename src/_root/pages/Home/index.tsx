@@ -21,16 +21,16 @@ const Home: React.FC = () => {
   return (
     <>
       {/* Content */}
-      <div className="text-center max-w-[1272px]  text-black pt-[130px] mx-auto relative z-10 mb-[66px]">
+      <div className="text-center max-w-[1272px]  text-black   pt-[130px] mx-auto relative z-10 mb-[66px]">
         <div className="max-w-[1090px] relative">
-
           <TextEffect
-            className="@apply text-[152px] font-semibold leading-[55px] text-left pb-[70px]"
+            className=" text-3xl text-left md:text-5xl font-bold mb-4"
             preset="fade-in-blur"
             speedReveal={1.1}
             speedSegment={0.3}
           >
-            UQIUE DEVS
+            Qanday qilib biz jahon darajasidagi IT-mutaxassislarni
+            tayyorlashimizni bilib oling!
           </TextEffect>
           <div className="absolute w-[257px] h-[80px] bg-[url('/public/assets/images/Star.png')] left-[928.35px] top-[90px]"></div>
 
@@ -70,7 +70,9 @@ const Home: React.FC = () => {
           </Card>
         </div>
       </div>
-    
+      <div className="relative">
+        <div className="w-[243px] h-[243px] mb-[30px] absolute top-[-125px] left-[43%] z-10 bg-[url('/assets/images/T-Rex.png')] bg-cover bg-no-repeat"></div>
+      </div>
       <div className="min-h-screen bg-[#fff] rounded-tl-[92px] rounded-tr-[92px]">
         <div>
           <div className="flex relative items-center justify-center">
