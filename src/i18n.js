@@ -1,11 +1,21 @@
-import i18n from "i18next";
-import Backend from "i18next-http-backend";
-import LanguageDetector from "i18next-browser-languagedetector";
-import { initReactI18next } from "react-i18next";
+import i18n from 'i18next';
+import { initReactI18next } from 'react-i18next';
 
-i18n.use(Backend).use(LanguageDetector).use(initReactI18next).init({
-  fallbackLng: "en",
-  debug: true,
+// JSON-файлы переводов
+import en from '/public/locales/en/translation.json'; // Путь к вашим переводам
+import uz from '/public/locales/uz/translation.json'; // Если используется русский язык
+import ru from '/public/locales/ru/translation.json'; // Если используется русский язык
+
+
+i18n.use(initReactI18next).init({
+  resources: {
+    en: { translation: en },
+    uz: { translation: uz },
+    ru: { translation: ru }, // Если используется русский язык
+  },
+  lng: 'en', // Установите язык по умолчанию
+  fallbackLng: 'en', // Язык для резервного варианта
+  interpolation: { escapeValue: false }, // Без экранирования
 });
 
 export default i18n;
