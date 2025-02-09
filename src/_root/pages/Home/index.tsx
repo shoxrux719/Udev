@@ -13,6 +13,7 @@ import { Button } from "@/components/ui/button";
 import { TextEffect } from "@/components/ui/text-effect";
 import { ArrowUpRight } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import InfiniteSlider from "./components/InfinitySlider";
 
 const Home: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState<number>(1);
@@ -121,6 +122,7 @@ const Home: React.FC = () => {
             </div>
           </Carousel>
         </div>
+        <InfiniteSlider />
       </div>
     </>
   );
