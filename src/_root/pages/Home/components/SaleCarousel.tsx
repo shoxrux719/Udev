@@ -1,23 +1,36 @@
+import { InfiniteSlider } from "@/components/ui/infinite-slider";
+
 const SaleCarousel: React.FC = () => {
-    return (
-        <div className="carousel-container">
-          <div className="tape tape-black">
-            {Array.from({ length: 30 }).map((_, index) => (
-              <span key={index} className="tape-text">
-                CHEGIRMA
-              </span>
-            ))}
-          </div>
-          <div className="tape tape-green">
-            {Array.from({ length: 30 }).map((_, index) => (
-              <span key={index} className="tape-text">
-                CHEGIRMA
-              </span>
-            ))}
-          </div>
-        </div>
-      );
-    };
-       
-  
-  export default SaleCarousel;
+  return (
+    <div className="">
+      <InfiniteSlider
+        gap={108}
+        reverse={false}
+        className="mt-[49px] bg-[#242323] py-5 chegirma__qora"
+      >
+        <p className="text-white">CHEGIRMA</p>
+        <p className="text-white">CHEGIRMA</p>
+        <p className="text-white">CHEGIRMA</p>
+        <p className="text-white">CHEGIRMA</p>
+        <p className="text-white">CHEGIRMA</p>
+        <p className="text-white">CHEGIRMA</p>
+        <p className="text-white">CHEGIRMA</p>
+      </InfiniteSlider>
+      <InfiniteSlider
+        gap={108}
+        reverse={false}
+        className="mt-[49px] bg-[#ADFF00] py-5 chegirma"
+      >
+        <p>CHEGIRMA</p>
+        <p>CHEGIRMA</p>
+        <p>CHEGIRMA</p>
+        <p>CHEGIRMA</p>
+        <p>CHEGIRMA</p>
+        <p>CHEGIRMA</p>
+        <p>CHEGIRMA</p>
+      </InfiniteSlider>
+    </div>
+  );
+};
+
+export default SaleCarousel;

@@ -14,6 +14,7 @@ import { TextEffect } from "@/components/ui/text-effect";
 import { ArrowUpRight } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import InfiniteSlider from "./components/InfinitySlider";
+import SaleCarousel from "./components/SaleCarousel";
 
 const Home: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState<number>(1);
@@ -30,8 +31,7 @@ const Home: React.FC = () => {
             speedReveal={1.1}
             speedSegment={0.3}
           >
-            Qanday qilib biz jahon darajasidagi IT-mutaxassislarni
-            tayyorlashimizni bilib oling!
+            {t("title")}
           </TextEffect>
           <div className="absolute w-[257px] h-[80px] bg-[url('/public/assets/images/Star.png')] left-[928.35px] top-[90px]"></div>
 
@@ -60,9 +60,7 @@ const Home: React.FC = () => {
                 <p className="text-4xl font-bold  text-left flex ">
                   125 <span className="text-2xl font-bold text-left">k+</span>
                 </p>
-                <p className="text-base font-normal leading-6 text-left">
-                  {t("title")}
-                </p>
+                <p className="text-base font-normal leading-6 text-left"></p>
                 <Button className=" absolute top-[-.5px] right-[-52px] bg-[#ADFF00] text-black hover:bg-lime-600 w-[83px] h-[100px] rounded-[20px] px-4 font-semibold text-base  ">
                   KIRISH
                 </Button>
@@ -122,6 +120,7 @@ const Home: React.FC = () => {
             </div>
           </Carousel>
         </div>
+        <SaleCarousel />
         <InfiniteSlider />
       </div>
     </>
