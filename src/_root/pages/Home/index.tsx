@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Location from "./components/Location";
 import {
   Carousel,
   CarouselContent,
@@ -21,6 +22,7 @@ const Home: React.FC = () => {
   return (
     <>
       {/* Header Section */}
+        <Location />
       <div className="text-center max-w-[1272px] text-black pt-[130px] mx-auto relative z-10 mb-[66px]">
         <div className="max-w-[1090px] relative">
           <TextEffect
@@ -107,6 +109,10 @@ const Home: React.FC = () => {
             </div>
           </Carousel>
         </div>
+      </div>
+
+      <div>
+        <Location />
       </div>
     </>
   );

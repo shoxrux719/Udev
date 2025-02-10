@@ -4,5 +4,9 @@
   "card_text": "125 k+ o'quvchilar",
   "cta_text": "Akademiyamizga bepul sayohatga keling va zamonaviy texnologiyalar olamiga sho’ng’ing!",
   "login_button": "KIRISH",
-  "cta_Courses": "Kurslar"
+  "cta_Courses": "Kurslar",
+  "Sale_banner": "BARCHA KURSLARGA 25% CHEGIRMA!!",
+  "button": {
+    "more": "Batafsil"
+  }
 }

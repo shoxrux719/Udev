@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Outlet, Link, NavLink } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
 import {
     Select,
     SelectContent,
@@ -10,6 +11,7 @@ import {
 } from "@/components/ui/select";
 import { useTranslation } from "react-i18next";
 import { t } from "i18next";
+import { cn } from "@/lib/utils";
 
 
 const RootLayout: React.FC = () => {
@@ -24,7 +26,7 @@ const RootLayout: React.FC = () => {
 
     return (
         <>
-            <nav className="flex container mx-auto justify-between items-center pt-6 pb-6 bg-transparent z-10">
+            <nav className="sticky flex container mx-auto justify-between items-center pt-6 pb-6 bg-transparent z-10">
                 {/* Логотип и меню */}
                 <div className="flex justify-between items-center gap-4">
                     <Link to="/" className="cursor-pointer">
@@ -69,29 +71,61 @@ const RootLayout: React.FC = () => {
                             Alerts
                         </NavLink>
                     </div>
-                    <div className="flex items-center gap-4">
-                    <Select onValueChange={(value) => handleChangeLanguage(value)}>
-                        <SelectTrigger className="w-[70px] h-[42px] flex items-center justify-between  bg-none border-none shadow-none px-4  cursor-pointer">
-                            <SelectValue
-                                className="text-black"
-                                placeholder={i18n.language.toUpperCase()}
-                            />
-                        </SelectTrigger>
-                        <SelectContent>
-                            <SelectItem value="uz">O‘Z</SelectItem>
-                            <SelectItem value="en">EN</SelectItem>
-                            <SelectItem value="ru">РУ</SelectItem>
-                        </SelectContent>
-                    </Select>
+                    <div className="w-[80px]">
+      <Select
+        onValueChange={(value) => handleChangeLanguage(value)}
+        defaultValue={i18n.language}
+      >
+        {/* Select Trigger */}
+        <SelectTrigger className="w-[80px] h-[42px] flex items-center justify-between bg-gray-100 border rounded-lg px-4 shadow cursor-pointer">
+          <SelectValue
+            placeholder={i18n.language.toUpperCase()} // Display the current language
+          />
+        </SelectTrigger>
 
-                    <Button
-                        className="bg-[#ADFF00] text-black font-bold hover:bg-[#72ce27] hover:text-black"
-                        
-                    >
-                        {t("cta_Courses")}
-                        < /Button>
-                    </div>
+        {/* Select Content */}
+        <SelectContent className="w-[80px] bg-gray-100 rounded-lg shadow-md">
+          {/* Uzbek */}
+          <SelectItem
+            value="uz"
+            className="flex items-center gap-2 py-1 px-2 hover:bg-gray-200"
+          >
+            <span className="text-black">UZB</span>
+            <div
+              className={`w-3 h-3 rounded-full ${
+                i18n.language === "uz" ? "bg-green-500" : "bg-black"
+              }`}
+            ></div>
+          </SelectItem>
 
+          {/* Russian */}
+          <SelectItem
+            value="ru"
+            className="flex items-center gap-2 py-1 px-2 hover:bg-gray-200"
+          >
+            <span className="text-black">RUS</span>
+            <div
+              className={`w-3 h-3 rounded-full ${
+                i18n.language === "ru" ? "bg-green-500" : "bg-black"
+              }`}
+            ></div>
+          </SelectItem>
+
+          {/* English */}
+          <SelectItem
+            value="en"
+            className="flex items-center gap-2 py-1 px-2 hover:bg-gray-200"
+          >
+            <span className="text-black">ENG</span>
+            <div
+              className={`w-3 h-3 rounded-full ${
+                i18n.language === "en" ? "bg-green-500" : "bg-black"
+              }`}
+            ></div>
+          </SelectItem>
+        </SelectContent>
+      </Select>
+    </div>
                 </div>
 
             </nav>

@@ -26,7 +26,7 @@ const HomeCard: React.FC<CardProps> = ({ isActive }) => {
           alt="T-Rex"
           />
       </div>
-
+          
       <div className="flex items-center justify-between">
         <div>
           <h2

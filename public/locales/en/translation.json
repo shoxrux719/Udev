@@ -4,6 +4,9 @@
   "card_text": "125k+ students",
   "cta_text": "Come visit our academy for a free tour and dive into the world of modern technologies!",
   "login_button": "LOGIN",
-  "cta_Courses": "Courses"
-
+  "cta_Courses": "Courses",
+  "Sale_banner": "25% DISCOUNT ON ALL COURSES!!!",
+   "button": {
+    "more": "more"
+  }
 }
