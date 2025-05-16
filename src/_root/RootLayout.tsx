@@ -3,16 +3,15 @@ import { Outlet, Link, NavLink } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import {
-    Select,
-    SelectContent,
-    SelectItem,
-    SelectTrigger,
-    SelectValue,
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
 } from "@/components/ui/select";
 import { useTranslation } from "react-i18next";
 import { t } from "i18next";
 import { cn } from "@/lib/utils";
-
 
 const RootLayout: React.FC = () => {
     const { i18n } = useTranslation();
@@ -38,97 +37,128 @@ const RootLayout: React.FC = () => {
 
                 </div>
 
-                <div className="flex items-center justify-between text-black px-4 py-2 ">
-                    <div className="flex gap-4">
-                        <NavLink
-                            to="/about"
-                            className={({ isActive }) =>
-                                isActive
-                                    ? "text-black font-bold border-b-2 border-black"
-                                    : " hover:text-gray-500"
-                            }
-                        >
-                            О нас
-                        </NavLink>
-                        <NavLink
-                            to="/tips"
-                            className={({ isActive }) =>
-                                isActive
-                                    ? "text-black font-bold border-b-2 border-black"
-                                   : " hover:text-gray-500"
-                            }
-                        >
-                            Tips
-                        </NavLink>
-                        <NavLink
-                            to="/alerts"
-                            className={({ isActive }) =>
-                                isActive
-                                    ? "text-black font-bold border-b-2 border-black"
-                                    : " hover:text-gray-500"
-                            }
-                        >
-                            Alerts
-                        </NavLink>
-                    </div>
-                    <div className="w-[80px]">
-      <Select
-        onValueChange={(value) => handleChangeLanguage(value)}
-        defaultValue={i18n.language}
-      >
-        {/* Select Trigger */}
-        <SelectTrigger className="w-[80px] h-[42px] flex items-center justify-between bg-gray-100 border rounded-lg px-4 shadow cursor-pointer">
-          <SelectValue
-            placeholder={i18n.language.toUpperCase()} // Display the current language
-          />
-        </SelectTrigger>
+          {/* Desktop Menu */}
+          <div className="hidden md:flex items-center gap-8">
+            <NavLink
+              to="/"
+              className={({ isActive }) =>
+                isActive ? "font-bold text-black border-b-2 border-black" : "hover:text-gray-500"
+              }
+            >
+              Biz haqimizda
+            </NavLink>
+            <ScrollLink
+              to="Connect"
+              smooth={true}
+              duration={500}
+              spy={true}
+              offset={-80} // Подстрой под твой header
+              className="hover:text-gray-500 cursor-pointer"
+            >
+              Bog'lanish
+            </ScrollLink>
 
-        {/* Select Content */}
-        <SelectContent className="w-[80px] bg-gray-100 rounded-lg shadow-md">
-          {/* Uzbek */}
-          <SelectItem
-            value="uz"
-            className="flex items-center gap-2 py-1 px-2 hover:bg-gray-200"
-          >
-            <span className="text-black">UZB</span>
-            <div
-              className={`w-3 h-3 rounded-full ${
-                i18n.language === "uz" ? "bg-green-500" : "bg-black"
-              }`}
-            ></div>
-          </SelectItem>
+            <ScrollLink smooth={true} duration={500} to="comments">
+              Izohlar
+            </ScrollLink>
 
-          {/* Russian */}
-          <SelectItem
-            value="ru"
-            className="flex items-center gap-2 py-1 px-2 hover:bg-gray-200"
-          >
-            <span className="text-black">RUS</span>
-            <div
-              className={`w-3 h-3 rounded-full ${
-                i18n.language === "ru" ? "bg-green-500" : "bg-black"
-              }`}
-            ></div>
-          </SelectItem>
+            <ScrollLink smooth={true} duration={500} to="Connect">
+              Bizning jamoa
+            </ScrollLink>
 
-          {/* English */}
-          <SelectItem
-            value="en"
-            className="flex items-center gap-2 py-1 px-2 hover:bg-gray-200"
-          >
-            <span className="text-black">ENG</span>
-            <div
-              className={`w-3 h-3 rounded-full ${
-                i18n.language === "en" ? "bg-green-500" : "bg-black"
-              }`}
-            ></div>
-          </SelectItem>
-        </SelectContent>
-      </Select>
-    </div>
-                </div>
+            <div className="w-[80px]">
+              <Select
+                onValueChange={handleChangeLanguage}
+                defaultValue={i18n.language}
+              >
+                <SelectTrigger className="w-full h-[42px] flex items-center justify-between px-4 rounded-lg bg-gray-100">
+                  <SelectValue placeholder={i18n.language.toUpperCase()} />
+                </SelectTrigger>
+                <SelectContent className="bg-white shadow-lg rounded-lg">
+                  <SelectItem value="uz">UZB</SelectItem>
+                  <SelectItem value="ru">RUS</SelectItem>
+                  <SelectItem value="en">ENG</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+            <button className="w-[147px] h-[44px] bg-[#ADFF00] text-black font-semibold rounded-lg">
+              Kurslar
+            </button>
+          </div>
 
-            </nav>
+          {/* Mobile Menu Button */}
+          <div className="md:hidden flex items-center">
+            <button
+              className="flex flex-col justify-between w-8 h-6"
+              onClick={() => setIsOpen(!isOpen)}
+              aria-label="Toggle Menu"
+            >
+              <span
+                className={`block w-full h-[3px] bg-black rounded transition-transform duration-300 ${isOpen ? "rotate-45 translate-y-2" : ""}`}
+              ></span>
+              <span
+                className={`block w-full h-[3px] bg-black rounded transition-opacity duration-300 ${isOpen ? "opacity-0" : ""}`}
+              ></span>
+              <span
+                className={`block w-full h-[3px] bg-black rounded transition-transform duration-300 ${isOpen ? "-rotate-45 -translate-y-2" : ""}`}
+              ></span>
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile Menu */}
+        {isOpen && (
+          <div className="md:hidden bg-white shadow-lg py-4">
+            <div className="flex flex-col items-center gap-4">
+              <NavLink
+                to="/about"
+                className="text-black text-lg"
+                onClick={() => setIsOpen(false)}
+              >
+                BIZ HAQIMIZDA
+              </NavLink>
+              <NavLink
+                to="/contact"
+                className="text-black text-lg"
+                onClick={() => setIsOpen(false)}
+              >
+                KONTAKT
+              </NavLink>
+              <NavLink
+                to="/courses"
+                className="text-black text-lg"
+                onClick={() => setIsOpen(false)}
+              >
+                KURSLAR
+              </NavLink>
+              <button
+                className="w-[147px] h-[44px] bg-[#ADFF00] text-black font-semibold rounded-lg"
+                onClick={() => setIsOpen(false)}
+              >
+                Kurslar
+              </button>
+              <div className="w-[80px]">
+                <Select
+                  onValueChange={(value) => {
+                    handleChangeLanguage(value);
+                    setIsOpen(false);
+                  }}
+                  defaultValue={i18n.language}
+                >
+                  <SelectTrigger className="w-[85px] flex h-[42px] px-4 bg-gray-100 rounded-lg">
+                    <SelectValue placeholder={i18n.language.toUpperCase()} />
+                  </SelectTrigger>
+                  <SelectContent className="bg-white shadow-lg rounded-lg">
+                    <SelectItem value="uz">UZB</SelectItem>
+                    <SelectItem value="ru">RUS</SelectItem>
+                    <SelectItem value="en">ENG</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+            </div>
+          </div>
+        )}
+      </nav>
 
             <div className="container mx-auto">
                 <div>
